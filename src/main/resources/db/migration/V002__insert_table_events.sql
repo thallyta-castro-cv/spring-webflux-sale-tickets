@@ -1,0 +1,15 @@
+INSERT INTO events (type, name, date, description) VALUES
+('SHOW', 'Taylor Swift', '2024-02-15', 'A must-see event for all pop music lovers.'),
+('THEATER', 'The Comedy of Life', '2024-07-20', 'An exciting play that humorously portrays complex life moments. You can’t miss it.'),
+('CONCERT', 'Summer Concert', '2024-06-10', 'An open-air concert featuring great classical music artists.'),
+('LECTURE', 'Lecture on Artificial Intelligence', '2024-09-05', 'An informative lecture on the latest AI trends and tools.'),
+('WORKSHOP', 'Photography Workshop', '2024-11-30', 'A hands-on workshop to improve your photography skills.'),
+('SHOW', 'Stand-up Comedy', '2024-03-18', 'A night full of laughter and fun with the best comedians in Brazil.'),
+('CONCERT', 'The Phantom of the Opera', '2024-12-25', 'A classic opera performance.'),
+('THEATER', 'Theater Festival', '2025-04-12', 'A festival featuring the best plays of the year.'),
+('LECTURE', 'Innovation and Entrepreneurship Forum', '2025-10-08', 'A forum bringing together the country’s top innovators. Featuring the hosts of Shark Tank.'),
+('WORKSHOP', 'Cooking Classes', '2025-05-20', 'Hands-on cooking classes with renowned chefs.'),
+('SHOW', 'Bruno Mars', '2025-05-22', 'Back in Brazil, Bruno promises to deliver the biggest and best show of his career on the This is Mars tour.'),
+('THEATER', 'The Comedy of Life', '2025-07-14', 'An exciting play you can’t miss.'),
+('SHOW', 'The Weeknd', '2025-11-02', 'An electrifying open-air show with many special effects.'),
+('WORKSHOP', 'Coffee with Ideas', '2025-01-25', 'An event that teaches brainstorming and prioritization techniques to boost projects.');
