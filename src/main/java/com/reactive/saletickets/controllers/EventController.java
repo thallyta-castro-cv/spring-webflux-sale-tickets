@@ -1,21 +1,28 @@
 package com.reactive.saletickets.controllers;
 
-import com.reactive.saletickets.models.Event;
 import com.reactive.saletickets.models.EventDto;
-import com.reactive.saletickets.repositories.EventRepository;
 import com.reactive.saletickets.services.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.publisher.Sinks;
+
+import java.time.Duration;
 
 @RestController
 @RequestMapping("/events")
 public class EventController {
 
-    @Autowired
-    private EventService eventService;
+    private final EventService eventService;
+    private final Sinks.Many<EventDto> eventSink;
+
+    public EventController(EventService service) {
+        this.eventService = service;
+        this.eventSink = Sinks.many().multicast().onBackpressureBuffer();
+    }
+
 
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<EventDto> getAll() {
@@ -27,9 +34,16 @@ public class EventController {
         return eventService.getById(id);
     }
 
+    @GetMapping(value = "/category/{type}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<EventDto> getByType(@PathVariable String type) {
+        return Flux.merge(eventService.getByType(type), eventSink.asFlux())
+                .delayElements(Duration.ofSeconds(4));
+    }
+
     @PostMapping
     public Mono<EventDto> register(@RequestBody EventDto dto) {
-        return eventService.register(dto);
+        return eventService.register(dto)
+                .doOnSuccess(eventSink::tryEmitNext);
     }
 
     @DeleteMapping("/{id}")

@@ -1,6 +1,7 @@
 package com.reactive.saletickets.services;
 
 import com.reactive.saletickets.models.EventDto;
+import com.reactive.saletickets.models.EventTypeEnum;
 import com.reactive.saletickets.repositories.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,4 +49,11 @@ public class EventService {
                 })
                 .map(EventDto::toDto);
     }
+
+    public Flux<EventDto> getByType(String type) {
+        EventTypeEnum eventType = EventTypeEnum.valueOf(type.toUpperCase());
+        return repository.findByType(eventType)
+                .map(EventDto::toDto);
+    }
+
 }
