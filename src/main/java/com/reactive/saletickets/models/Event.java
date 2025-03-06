@@ -2,6 +2,7 @@ package com.reactive.saletickets.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDate;
@@ -10,7 +11,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class Event {
-    @id
+    @Id
     private Long id;
     private EventTypeEnum type;
     private String name;
