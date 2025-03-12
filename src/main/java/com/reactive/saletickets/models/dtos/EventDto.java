@@ -1,4 +1,7 @@
-package com.reactive.saletickets.models;
+package com.reactive.saletickets.models.dtos;
+
+import com.reactive.saletickets.models.entities.Event;
+import com.reactive.saletickets.models.enuns.EventTypeEnum;
 
 import java.time.LocalDate;
 

@@ -1,7 +1,7 @@
 package com.reactive.saletickets.repositories;
 
-import com.reactive.saletickets.models.Event;
-import com.reactive.saletickets.models.EventTypeEnum;
+import com.reactive.saletickets.models.entities.Event;
+import com.reactive.saletickets.models.enuns.EventTypeEnum;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Flux;
 

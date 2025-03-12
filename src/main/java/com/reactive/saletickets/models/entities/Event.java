@@ -1,5 +1,6 @@
-package com.reactive.saletickets.models;
+package com.reactive.saletickets.models.entities;
 
+import com.reactive.saletickets.models.enuns.EventTypeEnum;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;

@@ -1,7 +1,7 @@
 package com.reactive.saletickets.services;
 
-import com.reactive.saletickets.models.EventDto;
-import com.reactive.saletickets.models.EventTypeEnum;
+import com.reactive.saletickets.models.dtos.EventDto;
+import com.reactive.saletickets.models.enuns.EventTypeEnum;
 import com.reactive.saletickets.repositories.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

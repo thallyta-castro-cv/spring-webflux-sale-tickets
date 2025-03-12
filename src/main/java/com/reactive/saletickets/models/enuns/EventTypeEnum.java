@@ -1,4 +1,4 @@
-package com.reactive.saletickets.models;
+package com.reactive.saletickets.models.enuns;
 
 public enum EventTypeEnum {
     SHOW,

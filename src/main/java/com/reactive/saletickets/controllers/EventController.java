@@ -1,8 +1,7 @@
 package com.reactive.saletickets.controllers;
 
-import com.reactive.saletickets.models.EventDto;
+import com.reactive.saletickets.models.dtos.EventDto;
 import com.reactive.saletickets.services.EventService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
