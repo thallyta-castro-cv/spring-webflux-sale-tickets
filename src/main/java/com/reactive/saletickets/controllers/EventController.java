@@ -2,6 +2,7 @@ package com.reactive.saletickets.controllers;
 
 import com.reactive.saletickets.models.dtos.EventDto;
 import com.reactive.saletickets.services.EventService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -22,7 +23,6 @@ public class EventController {
         this.eventSink = Sinks.many().multicast().onBackpressureBuffer();
     }
 
-
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<EventDto> getAll() {
         return eventService.getAll();
@@ -39,13 +39,20 @@ public class EventController {
                 .delayElements(Duration.ofSeconds(4));
     }
 
+    @GetMapping("/{id}/translate/{language}")
+    public Mono<String> getTranslation(@PathVariable Long id, @PathVariable String language) {
+        return eventService.getTranslation(id, language);
+    }
+
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Mono<EventDto> register(@RequestBody EventDto dto) {
         return eventService.register(dto)
                 .doOnSuccess(eventSink::tryEmitNext);
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Mono<Void> delete(@PathVariable Long id) {
         return eventService.delete(id);
     }

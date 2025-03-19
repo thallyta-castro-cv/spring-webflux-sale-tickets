@@ -1,5 +1,6 @@
 package com.reactive.saletickets.services;
 
+import com.reactive.saletickets.client.DeepLClient;
 import com.reactive.saletickets.models.dtos.EventDto;
 import com.reactive.saletickets.models.enuns.EventTypeEnum;
 import com.reactive.saletickets.repositories.EventRepository;
@@ -54,6 +55,11 @@ public class EventService {
         EventTypeEnum eventType = EventTypeEnum.valueOf(type.toUpperCase());
         return repository.findByType(eventType)
                 .map(EventDto::toDto);
+    }
+
+    public Mono<String> getTranslation(Long id, String language) {
+        return repository.findById(id)
+                .flatMap(e -> DeepLClient.getTranslation(e.getDescription(), language));
     }
 
 }
